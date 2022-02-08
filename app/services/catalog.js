@@ -5,8 +5,10 @@ angular.module("app")
 .factory('catalog', ['$http', '$q', 'COOLSTORE_CONFIG', 'Auth', '$location', function($http, $q, COOLSTORE_CONFIG, $auth, $location) {
 	var factory = {}, products, baseUrl;
 
+    //baseUrl = $location.protocol() + '://cart-' + COOLSTORE_CONFIG.OCP_NAMESPACE + '.' + $location.host().replace(/^.*?\.(.*)/g,"$1") + '/api/cart';
+
     //baseUrl = $location.protocol() + '://localhost:8081/services/products';
-    baseUrl = $location.protocol() + '://' + COOLSTORE_CONFIG.API_ENDPOINT + '/services/products';
+    baseUrl = $location.protocol() + '://' + COOLSTORE_CONFIG.API_ENDPOINT + '.' + $location.host().replace(/^.*?\.(.*)/g,"$1") + '/services/products';
 
     factory.getProducts = function() {
 		var deferred = $q.defer();
